@@ -1,0 +1,497 @@
+Diagnostics Report [renv 1.1.5]
+===============================
+
+
+# Session Info ---------------------------------------------------------------
+R version 4.5.1 (2025-06-13 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=Portuguese_Portugal.utf8  LC_CTYPE=Portuguese_Portugal.utf8   
+[3] LC_MONETARY=Portuguese_Portugal.utf8 LC_NUMERIC=C                        
+[5] LC_TIME=Portuguese_Portugal.utf8    
+
+time zone: Europe/Lisbon
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+loaded via a namespace (and not attached):
+[1] BiocManager_1.30.26 compiler_4.5.1      tools_4.5.1        
+[4] renv_1.1.5         
+
+# Project --------------------------------------------------------------------
+Project path: "~/Desktop/umk57_new_github"
+
+# Status ---------------------------------------------------------------------
+The following package(s) are in an inconsistent state:
+
+ package                           installed recorded used
+ annotate                          y         n        y   
+ assertthat                        y         n        y   
+ assorthead                        y         n        y   
+ babelgene                         y         n        y   
+ beachmat                          y         n        y   
+ BiocFileCache                     y         n        y   
+ BiocIO                            y         n        y   
+ BiocSingular                      y         n        y   
+ bitops                            y         n        y   
+ clusterProfiler                   y         n        y   
+ commonmark                        y         n        y   
+ DOSE                              y         n        y   
+ enrichplot                        y         n        y   
+ exactRankTests                    y         n        y   
+ fastmatch                         y         n        y   
+ fgsea                             y         n        y   
+ filelock                          y         n        y   
+ GenomicAlignments                 y         n        y   
+ GenomicFeatures                   y         n        y   
+ ggforce                           y         n        y   
+ ggnewscale                        y         n        y   
+ ggpointdensity                    y         n        y   
+ ggtangle                          y         n        y   
+ ggtext                            y         n        y   
+ GO.db                             y         n        y   
+ GOSemSim                          y         n        y   
+ graph                             y         n        y   
+ gridtext                          y         n        y   
+ GSEABase                          y         n        y   
+ gson                              y         n        y   
+ GSVA                              y         n        y   
+ h5mread                           y         n        y   
+ HDF5Array                         y         n        y   
+ igraph                            y         n        y   
+ irlba                             y         n        y   
+ jpeg                              y         n        y   
+ km.ci                             y         n        y   
+ KMsurv                            y         n        y   
+ litedown                          y         n        y   
+ magick                            y         n        y   
+ markdown                          y         n        y   
+ maxstat                           y         n        y   
+ memuse                            y         n        y   
+ msigdbr                           y         n        y   
+ mvtnorm                           y         n        y   
+ polyclip                          y         n        y   
+ qvalue                            y         n        y   
+ R.methodsS3                       y         n        y   
+ R.oo                              y         n        y   
+ R.utils                           y         n        y   
+ RCurl                             y         n        y   
+ reshape2                          y         n        y   
+ restfulr                          y         n        y   
+ rhdf5                             y         n        y   
+ rhdf5filters                      y         n        y   
+ Rhdf5lib                          y         n        y   
+ Rhtslib                           y         n        y   
+ Rsamtools                         y         n        y   
+ rsvd                              y         n        y   
+ rtracklayer                       y         n        y   
+ ScaledMatrix                      y         n        y   
+ scatterpie                        y         n        y   
+ SingleCellExperiment              y         n        y   
+ sparseMatrixStats                 y         n        y   
+ SpatialExperiment                 y         n        y   
+ survminer                         y         n        y   
+ survMisc                          y         n        y   
+ tweenr                            y         n        y   
+ TxDb.Hsapiens.UCSC.hg19.knownGene y         n        y   
+ viridis                           y         n        y   
+ writexl                           y         n        y   
+ XML                               y         n        y   
+ xtable                            y         n        y   
+ zoo                               y         n        y   
+
+See `]8;;x-r-help:renv::status?renv::status]8;;` for advice on resolving these issues.
+
+# Packages -------------------------------------------------------------------
+                                     Library                              Source   Lockfile                              Source Path Dependency
+AnnotationDbi                         1.70.0                   Bioconductor 3.21     1.70.0                   Bioconductor 3.21  [1]     direct
+BH                                  1.87.0-1                                CRAN   1.87.0-1                                CRAN  [1]   indirect
+Biobase                               2.68.0                   Bioconductor 3.21     2.68.0                   Bioconductor 3.21  [1]   indirect
+BiocFileCache                         2.16.2                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+BiocGenerics                          0.54.0                   Bioconductor 3.21     0.54.0                   Bioconductor 3.21  [1]   indirect
+BiocIO                                1.18.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+BiocManager                          1.30.26                                CRAN    1.30.26                                CRAN  [1]   indirect
+BiocParallel                          1.42.1                   Bioconductor 3.21     1.42.1                   Bioconductor 3.21  [1]   indirect
+BiocSingular                          1.24.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+BiocVersion                           3.21.1                   Bioconductor 3.21     3.21.1                   Bioconductor 3.21  [1]   indirect
+Biostrings                            2.76.0                   Bioconductor 3.21     2.76.0                   Bioconductor 3.21  [1]   indirect
+Cairo                                  1.6-5                                CRAN      1.6-5                                CRAN  [1]   indirect
+ComplexHeatmap                        2.24.1                   Bioconductor 3.21     2.24.1                   Bioconductor 3.21  [1]     direct
+DBI                                    1.2.3                                CRAN      1.2.3                                CRAN  [1]   indirect
+DESeq2                                1.48.1                   Bioconductor 3.21     1.48.1                   Bioconductor 3.21  [1]     direct
+DOSE                                   4.2.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+DelayedArray                          0.34.1                   Bioconductor 3.21     0.34.1                   Bioconductor 3.21  [1]   indirect
+Deriv                                  4.2.0                                CRAN      4.2.0                                CRAN  [1]   indirect
+Formula                                1.2-5                                CRAN      1.2-5                                CRAN  [1]   indirect
+GO.db                                 3.21.0                        Bioconductor       <NA>                                <NA>  [1]   indirect
+GOSemSim                              2.34.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+GSEABase                              1.70.1                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+GSVA                                   2.4.4 https://bioc-release.r-universe.dev       <NA>                                <NA>  [1]     direct
+GenomeInfoDb                          1.44.2                   Bioconductor 3.21     1.44.2                   Bioconductor 3.21  [1]   indirect
+GenomeInfoDbData                      1.2.14                        Bioconductor     1.2.14                        Bioconductor  [1]   indirect
+GenomicAlignments                     1.44.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+GenomicFeatures                       1.60.0                   Bioconductor 3.21       <NA>                                <NA>  [1]     direct
+GenomicRanges                         1.60.0                   Bioconductor 3.21     1.60.0                   Bioconductor 3.21  [1]   indirect
+GetoptLong                             1.0.5                                CRAN      1.0.5                                CRAN  [1]   indirect
+GlobalOptions                          0.1.2                                CRAN      0.1.2                                CRAN  [1]   indirect
+HDF5Array                             1.36.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+IRanges                               2.42.0                   Bioconductor 3.21     2.42.0                   Bioconductor 3.21  [1]   indirect
+KEGGREST                              1.48.1                   Bioconductor 3.21     1.48.1                   Bioconductor 3.21  [1]   indirect
+KMsurv                                 0.1-6                                CRAN       <NA>                                <NA>  [1]   indirect
+KernSmooth                           2.23-26                                CRAN    2.23-26                                CRAN  [1]   indirect
+MASS                                  7.3-65                                CRAN     7.3-65                                CRAN  [1]   indirect
+Matrix                                 1.7-3                                CRAN      1.7-3                                CRAN  [1]   indirect
+MatrixGenerics                        1.20.0                   Bioconductor 3.21     1.20.0                   Bioconductor 3.21  [1]   indirect
+MatrixModels                           0.5-4                                CRAN      0.5-4                                CRAN  [1]   indirect
+R.methodsS3                            1.8.2                                CRAN       <NA>                                <NA>  [1]   indirect
+R.oo                                  1.27.1                                CRAN       <NA>                                <NA>  [1]   indirect
+R.utils                               2.13.0                                CRAN       <NA>                                <NA>  [1]   indirect
+R6                                     2.6.1                                CRAN      2.6.1                                CRAN  [1]   indirect
+RColorBrewer                           1.1-3                                CRAN      1.1-3                                CRAN  [1]   indirect
+RCurl                              1.98-1.17                                CRAN       <NA>                                <NA>  [1]   indirect
+RSQLite                                2.4.2                                CRAN      2.4.2                                CRAN  [1]   indirect
+Rcpp                                   1.1.0                                CRAN      1.1.0                                CRAN  [1]   indirect
+RcppArmadillo                       15.0.2-1                                CRAN   15.0.2-1                                CRAN  [1]   indirect
+RcppEigen                          0.3.4.0.2                                CRAN  0.3.4.0.2                                CRAN  [1]   indirect
+Rdpack                                 2.6.4                                CRAN      2.6.4                                CRAN  [1]   indirect
+Rhdf5lib                              1.30.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+Rhtslib                                3.4.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+Rsamtools                             2.24.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+Rttf2pt1                              1.3.12                                CRAN     1.3.12                                CRAN  [1]   indirect
+S4Arrays                               1.8.1                   Bioconductor 3.21      1.8.1                   Bioconductor 3.21  [1]   indirect
+S4Vectors                             0.48.0 https://bioc-release.r-universe.dev     0.48.0 https://bioc-release.r-universe.dev  [1]   indirect
+S7                                     0.2.0                                CRAN      0.2.0                                CRAN  [1]   indirect
+ScaledMatrix                          1.16.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+SingleCellExperiment                  1.30.1                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+SparseArray                            1.8.1                   Bioconductor 3.21      1.8.1                   Bioconductor 3.21  [1]   indirect
+SparseM                               1.84-2                                CRAN     1.84-2                                CRAN  [1]   indirect
+SpatialExperiment                     1.20.0 https://bioc-release.r-universe.dev       <NA>                                <NA>  [1]   indirect
+SummarizedExperiment                  1.38.1                   Bioconductor 3.21     1.38.1                   Bioconductor 3.21  [1]   indirect
+TxDb.Hsapiens.UCSC.hg19.knownGene      3.2.2                        Bioconductor       <NA>                                <NA>  [1]     direct
+UCSC.utils                             1.4.0                   Bioconductor 3.21      1.4.0                   Bioconductor 3.21  [1]   indirect
+XML                                3.99-0.19                                CRAN       <NA>                                <NA>  [1]   indirect
+XVector                               0.48.0                   Bioconductor 3.21     0.48.0                   Bioconductor 3.21  [1]   indirect
+abind                                  1.4-8                                CRAN      1.4-8                                CRAN  [1]   indirect
+annotate                              1.86.1                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+ape                                    5.8-1                                CRAN      5.8-1                                CRAN  [1]   indirect
+aplot                                  0.2.9                                CRAN      0.2.9                                CRAN  [1]   indirect
+ash                                   1.0-15                                CRAN     1.0-15                                CRAN  [1]   indirect
+askpass                                1.2.1                                CRAN      1.2.1                                CRAN  [1]   indirect
+assertthat                             0.2.1                                CRAN       <NA>                                <NA>  [1]   indirect
+assorthead                             1.2.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+babelgene                               22.9                                CRAN       <NA>                                <NA>  [1]   indirect
+backports                              1.5.0                                CRAN      1.5.0                                CRAN  [1]   indirect
+base64enc                              0.1-3                                CRAN      0.1-3                                CRAN  [1]   indirect
+beachmat                              2.24.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+beeswarm                               0.4.0                                CRAN      0.4.0                                CRAN  [1]   indirect
+bit                                    4.6.0                                CRAN      4.6.0                                CRAN  [1]   indirect
+bit64                                4.6.0-1                                CRAN    4.6.0-1                                CRAN  [1]   indirect
+bitops                                 1.0-9                                CRAN       <NA>                                <NA>  [1]   indirect
+blob                                   1.2.4                                CRAN      1.2.4                                CRAN  [1]   indirect
+boot                                  1.3-31                                CRAN     1.3-31                                CRAN  [1]   indirect
+broom                                  1.0.9                                CRAN      1.0.9                                CRAN  [1]   indirect
+bslib                                  0.9.0                                CRAN      0.9.0                                CRAN  [1]   indirect
+cachem                                 1.1.0                                CRAN      1.1.0                                CRAN  [1]   indirect
+callr                                  3.7.6                                CRAN      3.7.6                                CRAN  [1]   indirect
+car                                    3.1-3                                CRAN      3.1-3                                CRAN  [1]   indirect
+carData                                3.0-5                                CRAN      3.0-5                                CRAN  [1]   indirect
+cellranger                             1.1.0                                CRAN      1.1.0                                CRAN  [1]   indirect
+circlize                              0.4.16                                CRAN     0.4.16                                CRAN  [1]     direct
+class                                 7.3-23                                CRAN       <NA>                                <NA>  [2]       <NA>
+cli                                    3.6.6                                CRAN      3.6.6                                CRAN  [1]   indirect
+clipr                                  0.8.0                                CRAN      0.8.0                                CRAN  [1]   indirect
+clue                                  0.3-66                                CRAN     0.3-66                                CRAN  [1]   indirect
+cluster                              2.1.8.1                                CRAN    2.1.8.1                                CRAN  [1]   indirect
+clusterProfiler                       4.16.0                   Bioconductor 3.21       <NA>                                <NA>  [1]     direct
+codetools                             0.2-20                                CRAN     0.2-20                                CRAN  [1]   indirect
+colorspace                             2.1-1                                CRAN      2.1-1                                CRAN  [1]   indirect
+commonmark                             2.0.0                                CRAN       <NA>                                <NA>  [1]   indirect
+compiler                                <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+conflicted                             1.2.0                                CRAN      1.2.0                                CRAN  [1]   indirect
+corrplot                                0.95                                CRAN       0.95                                CRAN  [1]   indirect
+cowplot                                1.2.0                                CRAN      1.2.0                                CRAN  [1]   indirect
+cpp11                                  0.5.5                                CRAN      0.5.5                                CRAN  [1]   indirect
+crayon                                 1.5.3                                CRAN      1.5.3                                CRAN  [1]   indirect
+crosstalk                              1.2.2                                CRAN      1.2.2                                CRAN  [1]   indirect
+curl                                   7.0.0                                CRAN      7.0.0                                CRAN  [1]   indirect
+data.table                            1.17.8                                CRAN     1.17.8                                CRAN  [1]   indirect
+datasets                                <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+dbplyr                                 2.5.1                                CRAN      2.5.1                                CRAN  [1]   indirect
+digest                                0.6.37                                CRAN     0.6.37                                CRAN  [1]   indirect
+doBy                                   4.7.0                                CRAN      4.7.0                                CRAN  [1]   indirect
+doParallel                            1.0.17                                CRAN     1.0.17                                CRAN  [1]   indirect
+dplyr                                  1.1.4                                CRAN      1.1.4                                CRAN  [1]     direct
+dtplyr                                 1.3.2                                CRAN      1.3.2                                CRAN  [1]   indirect
+enrichplot                            1.28.4                   Bioconductor 3.21       <NA>                                <NA>  [1]     direct
+evaluate                               1.0.5                                CRAN      1.0.5                                CRAN  [1]   indirect
+exactRankTests                        0.8-35                                CRAN       <NA>                                <NA>  [1]   indirect
+extrafont                               0.19                                CRAN       0.19                                CRAN  [1]   indirect
+extrafontdb                              1.0                                CRAN        1.0                                CRAN  [1]   indirect
+farver                                 2.1.2                                CRAN      2.1.2                                CRAN  [1]   indirect
+fastmap                                1.2.0                                CRAN      1.2.0                                CRAN  [1]   indirect
+fastmatch                              1.1-6                                CRAN       <NA>                                <NA>  [1]   indirect
+fgsea                                 1.34.2                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+filelock                               1.0.3                                CRAN       <NA>                                <NA>  [1]   indirect
+fontawesome                            0.5.3                                CRAN      0.5.3                                CRAN  [1]   indirect
+forcats                                1.0.0                                CRAN      1.0.0                                CRAN  [1]     direct
+foreach                                1.5.2                                CRAN      1.5.2                                CRAN  [1]   indirect
+foreign                               0.8-90                                CRAN       <NA>                                <NA>  [2]       <NA>
+formatR                                 1.14                                CRAN       1.14                                CRAN  [1]   indirect
+fs                                     1.6.6                                CRAN      1.6.6                                CRAN  [1]   indirect
+futile.logger                          1.4.3                                CRAN      1.4.3                                CRAN  [1]   indirect
+futile.options                         1.0.1                                CRAN      1.0.1                                CRAN  [1]   indirect
+gargle                                 1.6.0                                CRAN      1.6.0                                CRAN  [1]   indirect
+generics                               0.1.4                                CRAN      0.1.4                                CRAN  [1]   indirect
+ggalt                                  0.6.1                              GitHub      0.6.1                              GitHub  [1]     direct
+ggbeeswarm                             0.7.2                                CRAN      0.7.2                                CRAN  [1]   indirect
+ggforce                                0.5.0                                CRAN       <NA>                                <NA>  [1]   indirect
+ggfun                                  0.2.0                                CRAN      0.2.0                                CRAN  [1]   indirect
+ggnewscale                             0.5.2                                CRAN       <NA>                                <NA>  [1]   indirect
+ggplot2                                4.0.3                                CRAN      4.0.3                                CRAN  [1]   indirect
+ggplotify                              0.1.2                                CRAN      0.1.2                                CRAN  [1]   indirect
+ggpointdensity                         0.2.1                                CRAN       <NA>                                <NA>  [1]     direct
+ggpubr                                 0.6.1                                CRAN      0.6.1                                CRAN  [1]     direct
+ggrastr                                1.0.2                                CRAN      1.0.2                                CRAN  [1]     direct
+ggrepel                                0.9.6                                CRAN      0.9.6                                CRAN  [1]     direct
+ggsci                                  3.2.0                                CRAN      3.2.0                                CRAN  [1]   indirect
+ggsignif                               0.6.4                                CRAN      0.6.4                                CRAN  [1]   indirect
+ggtangle                               0.0.7                                CRAN       <NA>                                <NA>  [1]   indirect
+ggtext                                 0.1.2                                CRAN       <NA>                                <NA>  [1]   indirect
+ggtree                                3.16.3                   Bioconductor 3.21     3.16.3                   Bioconductor 3.21  [1]     direct
+glue                                   1.8.1                                CRAN      1.8.1                                CRAN  [1]   indirect
+googledrive                            2.1.2                                CRAN      2.1.2                                CRAN  [1]   indirect
+googlesheets4                          1.1.2                                CRAN      1.1.2                                CRAN  [1]   indirect
+grDevices                               <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+graph                                 1.86.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+graphics                                <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+grid                                    <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+gridExtra                                2.3                                CRAN        2.3                                CRAN  [1]   indirect
+gridGraphics                           0.5-1                                CRAN      0.5-1                                CRAN  [1]   indirect
+gridtext                               0.1.5                                CRAN       <NA>                                <NA>  [1]   indirect
+gson                                   0.1.0                                CRAN       <NA>                                <NA>  [1]   indirect
+gtable                                 0.3.6                                CRAN      0.3.6                                CRAN  [1]   indirect
+h5mread                                1.0.1                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+haven                                  2.5.5                                CRAN      2.5.5                                CRAN  [1]   indirect
+highr                                   0.11                                CRAN       0.11                                CRAN  [1]   indirect
+hms                                    1.1.3                                CRAN      1.1.3                                CRAN  [1]   indirect
+htmltools                            0.5.8.1                                CRAN    0.5.8.1                                CRAN  [1]   indirect
+htmlwidgets                            1.6.4                                CRAN      1.6.4                                CRAN  [1]   indirect
+httr                                   1.4.7                                CRAN      1.4.7                                CRAN  [1]   indirect
+ids                                    1.0.1                                CRAN      1.0.1                                CRAN  [1]   indirect
+igraph                                 2.3.2                                CRAN       <NA>                                <NA>  [1]   indirect
+irlba                                2.3.5.1                                CRAN       <NA>                                <NA>  [1]   indirect
+isoband                                0.2.7                                CRAN      0.2.7                                CRAN  [1]   indirect
+iterators                             1.0.14                                CRAN     1.0.14                                CRAN  [1]   indirect
+jpeg                                  0.1-11                                CRAN       <NA>                                <NA>  [1]   indirect
+jquerylib                              0.1.4                                CRAN      0.1.4                                CRAN  [1]   indirect
+jsonlite                               2.0.0                                CRAN      2.0.0                                CRAN  [1]   indirect
+km.ci                                  0.5-6                                CRAN       <NA>                                <NA>  [1]   indirect
+knitr                                   1.50                                CRAN       1.50                                CRAN  [1]   indirect
+labeling                               0.4.3                                CRAN      0.4.3                                CRAN  [1]   indirect
+lambda.r                               1.2.4                                CRAN      1.2.4                                CRAN  [1]   indirect
+later                                  1.4.3                                CRAN      1.4.3                                CRAN  [1]   indirect
+lattice                               0.22-7                                CRAN     0.22-7                                CRAN  [1]   indirect
+lazyeval                               0.2.2                                CRAN      0.2.2                                CRAN  [1]   indirect
+lifecycle                              1.0.5                                CRAN      1.0.5                                CRAN  [1]   indirect
+limma                                 3.64.3                   Bioconductor 3.21     3.64.3                   Bioconductor 3.21  [1]     direct
+litedown                                 0.8                                CRAN       <NA>                                <NA>  [1]   indirect
+lme4                                  1.1-37                                CRAN     1.1-37                                CRAN  [1]   indirect
+locfit                              1.5-9.12                                CRAN   1.5-9.12                                CRAN  [1]   indirect
+lubridate                              1.9.4                                CRAN      1.9.4                                CRAN  [1]   indirect
+magick                                 2.9.0                                CRAN       <NA>                                <NA>  [1]   indirect
+magrittr                               2.0.5                                CRAN      2.0.5                                CRAN  [1]   indirect
+maps                                   3.4.3                                CRAN      3.4.3                                CRAN  [1]   indirect
+markdown                                 2.0                                CRAN       <NA>                                <NA>  [1]   indirect
+matrixStats                            1.5.0                                CRAN      1.5.0                                CRAN  [1]   indirect
+maxstat                               0.7-26                                CRAN       <NA>                                <NA>  [1]   indirect
+memoise                                2.0.1                                CRAN      2.0.1                                CRAN  [1]   indirect
+memuse                                 4.2-3                                CRAN       <NA>                                <NA>  [1]   indirect
+methods                                 <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+mgcv                                   1.9-3                                CRAN      1.9-3                                CRAN  [1]   indirect
+microbenchmark                         1.5.0                                CRAN      1.5.0                                CRAN  [1]   indirect
+mime                                    0.13                                CRAN       0.13                                CRAN  [1]   indirect
+minqa                                  1.2.8                                CRAN      1.2.8                                CRAN  [1]   indirect
+modelr                                0.1.11                                CRAN     0.1.11                                CRAN  [1]   indirect
+msigdbdf                              25.1.0      https://igordot.r-universe.dev       <NA>                                <NA>  [1]       <NA>
+msigdbr                               10.0.2                                CRAN       <NA>                                <NA>  [1]     direct
+mvtnorm                                1.3-3                                CRAN       <NA>                                <NA>  [1]   indirect
+nlme                                 3.1-168                                CRAN    3.1-168                                CRAN  [1]   indirect
+nloptr                                 2.2.1                                CRAN      2.2.1                                CRAN  [1]   indirect
+nnet                                  7.3-20                                CRAN     7.3-20                                CRAN  [1]   indirect
+numDeriv                          2016.8-1.1                                CRAN 2016.8-1.1                                CRAN  [1]   indirect
+openssl                                2.3.3                                CRAN      2.3.3                                CRAN  [1]   indirect
+org.Hs.eg.db                          3.21.0                        Bioconductor     3.21.0                        Bioconductor  [1]     direct
+parallel                                <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+patchwork                              1.3.2                                CRAN      1.3.2                                CRAN  [1]     direct
+pbkrtest                               0.5.5                                CRAN      0.5.5                                CRAN  [1]   indirect
+pillar                                1.11.0                                CRAN     1.11.0                                CRAN  [1]   indirect
+pkgconfig                              2.0.3                                CRAN      2.0.3                                CRAN  [1]   indirect
+plogr                                  0.2.0                                CRAN      0.2.0                                CRAN  [1]   indirect
+plotly                                4.11.0                                CRAN     4.11.0                                CRAN  [1]   indirect
+plyr                                   1.8.9                                CRAN      1.8.9                                CRAN  [1]   indirect
+png                                    0.1-8                                CRAN      0.1-8                                CRAN  [1]   indirect
+polyclip                              1.10-7                                CRAN       <NA>                                <NA>  [1]   indirect
+polynom                                1.4-1                                CRAN      1.4-1                                CRAN  [1]   indirect
+prettyunits                            1.2.0                                CRAN      1.2.0                                CRAN  [1]   indirect
+processx                               3.8.6                                CRAN      3.8.6                                CRAN  [1]   indirect
+progress                               1.2.3                                CRAN      1.2.3                                CRAN  [1]   indirect
+proj4                                 1.0-15                                CRAN     1.0-15                                CRAN  [1]   indirect
+promises                               1.3.3                                CRAN      1.3.3                                CRAN  [1]   indirect
+ps                                     1.9.1                                CRAN      1.9.1                                CRAN  [1]   indirect
+purrr                                  1.1.0                                CRAN      1.1.0                                CRAN  [1]   indirect
+quantreg                                 6.1                                CRAN        6.1                                CRAN  [1]   indirect
+qvalue                                2.40.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+ragg                                   1.5.0                                CRAN      1.5.0                                CRAN  [1]   indirect
+rappdirs                               0.3.3                                CRAN      0.3.3                                CRAN  [1]   indirect
+rbibutils                                2.3                                CRAN        2.3                                CRAN  [1]   indirect
+readr                                  2.1.5                                CRAN      2.1.5                                CRAN  [1]   indirect
+readxl                                 1.4.5                                CRAN      1.4.5                                CRAN  [1]   indirect
+reformulas                             0.4.4                                CRAN      0.4.4                                CRAN  [1]   indirect
+rematch                                2.0.0                                CRAN      2.0.0                                CRAN  [1]   indirect
+rematch2                               2.1.2                                CRAN      2.1.2                                CRAN  [1]   indirect
+renv                                   1.1.5                                CRAN      1.1.5                                CRAN  [1]     direct
+reprex                                 2.1.1                                CRAN      2.1.1                                CRAN  [1]   indirect
+reshape2                               1.4.4                                CRAN       <NA>                                <NA>  [1]   indirect
+restfulr                              0.0.16                                CRAN       <NA>                                <NA>  [1]   indirect
+rhdf5                                 2.52.1                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+rhdf5filters                          1.20.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+rjson                                 0.2.23                                CRAN     0.2.23                                CRAN  [1]   indirect
+rlang                                  1.2.0                                CRAN      1.2.0                                CRAN  [1]   indirect
+rmarkdown                               2.29                                CRAN       2.29                                CRAN  [1]   indirect
+rpart                                 4.1.24                                CRAN       <NA>                                <NA>  [2]       <NA>
+rstatix                                0.7.2                                CRAN      0.7.2                                CRAN  [1]     direct
+rstudioapi                            0.17.1                                CRAN     0.17.1                                CRAN  [1]   indirect
+rsvd                                   1.0.5                                CRAN       <NA>                                <NA>  [1]   indirect
+rtracklayer                           1.68.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+rvest                                  1.0.5                                CRAN      1.0.5                                CRAN  [1]   indirect
+sass                                  0.4.10                                CRAN     0.4.10                                CRAN  [1]   indirect
+scales                                 1.4.0                                CRAN      1.4.0                                CRAN  [1]   indirect
+scatterpie                             0.2.5                                CRAN       <NA>                                <NA>  [1]   indirect
+selectr                                0.4-2                                CRAN      0.4-2                                CRAN  [1]   indirect
+shape                                1.4.6.1                                CRAN    1.4.6.1                                CRAN  [1]   indirect
+snow                                   0.4-4                                CRAN      0.4-4                                CRAN  [1]   indirect
+sparseMatrixStats                     1.20.0                   Bioconductor 3.21       <NA>                                <NA>  [1]   indirect
+spatial                               7.3-18                                CRAN       <NA>                                <NA>  [2]       <NA>
+splines                                 <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+statmod                                1.5.0                                CRAN      1.5.0                                CRAN  [1]   indirect
+stats                                   <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+stats4                                  <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+stringi                                1.8.7                                CRAN      1.8.7                                CRAN  [1]   indirect
+stringr                                1.5.2                                CRAN      1.5.2                                CRAN  [1]     direct
+survMisc                               0.5.6                                CRAN       <NA>                                <NA>  [1]   indirect
+survival                               3.8-3                                CRAN      3.8-3                                CRAN  [1]     direct
+survminer                              0.5.1                                CRAN       <NA>                                <NA>  [1]     direct
+sys                                    3.4.3                                CRAN      3.4.3                                CRAN  [1]   indirect
+systemfonts                            1.3.1                                CRAN      1.3.1                                CRAN  [1]   indirect
+textshaping                            1.0.3                                CRAN      1.0.3                                CRAN  [1]   indirect
+tibble                                 3.3.0                                CRAN      3.3.0                                CRAN  [1]   indirect
+tidyr                                  1.3.1                                CRAN      1.3.1                                CRAN  [1]   indirect
+tidyselect                             1.2.1                                CRAN      1.2.1                                CRAN  [1]   indirect
+tidytree                               0.4.6                                CRAN      0.4.6                                CRAN  [1]   indirect
+tidyverse                              2.0.0                                CRAN      2.0.0                                CRAN  [1]     direct
+timechange                             0.3.0                                CRAN      0.3.0                                CRAN  [1]   indirect
+tinytex                                 0.57                                CRAN       0.57                                CRAN  [1]   indirect
+tools                                   <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+treeio                                1.32.0                   Bioconductor 3.21     1.32.0                   Bioconductor 3.21  [1]   indirect
+tweenr                                 2.0.3                                CRAN       <NA>                                <NA>  [1]   indirect
+tzdb                                   0.5.0                                CRAN      0.5.0                                CRAN  [1]   indirect
+utf8                                   1.2.6                                CRAN      1.2.6                                CRAN  [1]   indirect
+utils                                   <NA>                                <NA>       <NA>                                <NA>  [2]   indirect
+uuid                                   1.2-1                                CRAN      1.2-1                                CRAN  [1]   indirect
+vctrs                                  0.7.3                                CRAN      0.7.3                                CRAN  [1]   indirect
+vipor                                  0.4.7                                CRAN      0.4.7                                CRAN  [1]   indirect
+viridis                                0.6.5                                CRAN       <NA>                                <NA>  [1]     direct
+viridisLite                            0.4.2                                CRAN      0.4.2                                CRAN  [1]   indirect
+vroom                                  1.6.5                                CRAN      1.6.5                                CRAN  [1]   indirect
+withr                                  3.0.2                                CRAN      3.0.2                                CRAN  [1]   indirect
+writexl                                1.5.4                                CRAN       <NA>                                <NA>  [1]     direct
+xfun                                    0.54                                CRAN       0.54                                CRAN  [1]   indirect
+xml2                                   1.4.0                                CRAN      1.4.0                                CRAN  [1]   indirect
+xtable                                 1.8-4                                CRAN       <NA>                                <NA>  [1]   indirect
+yaml                                  2.3.10                                CRAN     2.3.10                                CRAN  [1]   indirect
+yulab.utils                            0.2.1                                CRAN      0.2.1                                CRAN  [1]   indirect
+zoo                                   1.8-14                                CRAN       <NA>                                <NA>  [1]   indirect
+
+[1]: C:/Users/cdsou/Desktop/umk57_new_github/renv/library/windows/R-4.5/x86_64-w64-mingw32        
+[2]: C:/Users/cdsou/AppData/Local/R/cache/R/renv/sandbox/windows/R-4.5/x86_64-w64-mingw32/0eea1ca5
+
+
+# ABI ------------------------------------------------------------------------
+- ABI conflict checks are not available on Windows.
+
+# User Profile ---------------------------------------------------------------
+[no user profile detected]
+
+# Settings -------------------------------------------------------------------
+List of 13
+ $ bioconductor.version     : chr "3.21"
+ $ external.libraries       : chr(0) 
+ $ ignored.packages         : chr(0) 
+ $ package.dependency.fields: chr [1:3] "Imports" "Depends" "LinkingTo"
+ $ ppm.enabled              : NULL
+ $ ppm.ignored.urls         : chr(0) 
+ $ r.version                : NULL
+ $ snapshot.type            : chr "implicit"
+ $ use.cache                : logi TRUE
+ $ vcs.ignore.cellar        : logi TRUE
+ $ vcs.ignore.library       : logi TRUE
+ $ vcs.ignore.local         : logi TRUE
+ $ vcs.manage.ignores       : logi TRUE
+
+# Options --------------------------------------------------------------------
+List of 9
+ $ defaultPackages                     : chr [1:6] "datasets" "utils" "grDevices" "graphics" ...
+ $ download.file.method                : chr "libcurl"
+ $ download.file.extra                 : NULL
+ $ install.packages.compile.from.source: chr "interactive"
+ $ pkgType                             : chr "both"
+ $ repos                               : Named chr [1:6] "https://bioconductor.org/packages/3.21/bioc" "https://bioconductor.org/packages/3.21/data/annotation" "https://bioconductor.org/packages/3.21/data/experiment" "https://bioconductor.org/packages/3.21/workflows" ...
+  ..- attr(*, "names")= chr [1:6] "BioCsoft" "BioCann" "BioCexp" "BioCworkflows" ...
+ $ renv.consent                        : logi TRUE
+ $ renv.project.path                   : chr "C:/Users/cdsou/Desktop/umk57_new_github"
+ $ renv.verbose                        : logi TRUE
+
+# Environment Variables ------------------------------------------------------
+HOME                        = C:\Users\cdsou
+LANG                        = <NA>
+MAKE                        = <NA>
+R_LIBS                      = <NA>
+R_LIBS_SITE                 = C:/PROGRA~1/R/R-45~1.1/site-library
+R_LIBS_USER                 = C:/Users/cdsou/Desktop/umk57_new_github/renv/library/windows/R-4.5/x86_64-w64-mingw32
+RENV_DEFAULT_R_ENVIRON      = <NA>
+RENV_DEFAULT_R_ENVIRON_USER = <NA>
+RENV_DEFAULT_R_LIBS         = <NA>
+RENV_DEFAULT_R_LIBS_SITE    = C:/PROGRA~1/R/R-45~1.1/site-library
+RENV_DEFAULT_R_LIBS_USER    = C:\Users\cdsou\AppData\Local/R/win-library/4.5
+RENV_DEFAULT_R_PROFILE      = <NA>
+RENV_DEFAULT_R_PROFILE_USER = <NA>
+RENV_PROJECT                = C:/Users/cdsou/Desktop/umk57_new_github
+
+# PATH -----------------------------------------------------------------------
+- C:\rtools45\x86_64-w64-mingw32.static.posix\bin
+- C:\rtools45\usr\bin
+- C:\Program Files\R\R-4.5.1\bin\x64
+- C:\WINDOWS\system32
+- C:\WINDOWS
+- C:\WINDOWS\System32\Wbem
+- C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+- C:\WINDOWS\System32\OpenSSH\
+- C:\Program Files\Git\cmd
+- C:\Users\cdsou\AppData\Local\Programs\Python\Python313\Scripts\
+- C:\Users\cdsou\AppData\Local\Programs\Python\Python313\
+- C:\Users\cdsou\AppData\Local\Microsoft\WindowsApps
+- C:\Users\cdsou\AppData\Local\Programs\Microsoft VS Code\bin
+- C:\Program Files\RStudio\resources\app\bin\quarto\bin
+- C:\Program Files\RStudio\resources\app\bin\postback
+
+# Cache ----------------------------------------------------------------------
+There are a total of 469 packages installed in the renv cache.
+Cache path: "~/AppData/Local/R/cache/R/renv/cache/v5/windows/R-4.5/x86_64-w64-mingw32"
+

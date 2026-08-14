@@ -1,0 +1,435 @@
+## Load Packages and Set Seed --------------------------------------------------
+
+set.seed(123)
+
+library(DESeq2)
+library(org.Hs.eg.db)
+library(tidyverse)
+library(ggrepel)
+library(ggpubr)
+library(ggalt)
+library(limma)
+library(circlize)
+library(ComplexHeatmap)
+library(ggtree)
+library(patchwork)
+
+
+dir.create(file.path("output_data", "results"), recursive = T)
+dir.create(file.path("output_data", "plots"), recursive = T)
+
+
+# Load Counts and Metadata ----------------------------------------------------
+
+# Load correct sample info and counts for DS, HGPS and Healthy
+# samples obtained from IonTorrent Suite:
+
+counts_matrix_correct <- read.csv(file.path("input_data", "counts_matrix.csv"),
+                                  row.names = 1)
+
+sample_info_correct <- read.csv(file.path("input_data", "sample_info.csv"),
+                                row.names = 1)
+
+
+# PCA HGPS UMK57 vs DMSO + Healthy --------------------------------------------
+
+sample_info_hgps_umk57_neo <- sample_info_correct %>% 
+  dplyr::filter(Disease %in% c("HGPS", "Healthy"))
+
+counts_matrix_neo_hgps_umk57 <- counts_matrix_correct[,row.names(
+  sample_info_hgps_umk57_neo)]
+
+colnames(counts_matrix_neo_hgps_umk57) == row.names(sample_info_hgps_umk57_neo)
+
+# Should be TRUE.
+
+# Create DESeq Object:
+
+dds_neo_hgps_umk57 <- DESeqDataSetFromMatrix(
+  countData = counts_matrix_neo_hgps_umk57,
+  colData = sample_info_hgps_umk57_neo,
+  design = ~ Individual) # Makes no difference for PCA.
+
+colnames(dds_neo_hgps_umk57)
+
+## Design wont matter at this stage though:
+
+smallestGroupSize <- 5 # ~ Half of samples
+
+keep <- rowSums(counts(dds_neo_hgps_umk57) >=5) >= smallestGroupSize 
+
+# Recomended in vignette.
+
+dds_neo_hgps_umk57 <- dds_neo_hgps_umk57[keep,]
+
+dds_neo_hgps_umk57
+
+dds_neo_hgps_umk57 <- DESeq(dds_neo_hgps_umk57)
+
+vsd <- vst(dds_neo_hgps_umk57, blind = TRUE) # Blind to ignore conditions.
+
+pcaData <- plotPCA(vsd, 
+                   intgroup = c("Treatment"), 
+                   returnData = TRUE, 
+                   ntop = 1000) # Using Top 1000 features.
+
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+
+
+pcaData <- pcaData |> dplyr::mutate(
+  Individual = case_when(
+    Individual == "NEO" ~ "Healthy",
+    Individual == "HGPS 169" ~ "HGPS 8y",
+    .default = Individual
+  )
+)
+
+shapes <- c(
+  "HGPS 8y" = 15,
+  "Healthy" = 16,
+  "DS 14y" = 17,
+  "DS 5y" = 18
+)
+
+cols_pca <- c(
+  "DMSO" = "gray30",
+  "UMK57" = "cyan"
+)
+
+
+pca_1 <- ggplot(pcaData, aes(PC1, PC2, color=Treatment, 
+                             label = Individual)) +
+  geom_point(size=4, alpha = 0.5, aes(shape = Individual)) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  theme_bw(base_size = 15) +
+  xlim(-25, 60) +
+  ylim(-15, 20) +
+  scale_shape_manual(values = shapes) +
+  scale_color_manual(values = cols_pca) +
+  theme(panel.grid = element_blank()) +
+  guides(fill = guide_legend(override.aes = list(linetype = 0)),
+         color = guide_legend(override.aes = list(linetype = 0)),
+         shape = guide_legend(override.aes = list(linetype = 0))) +
+  labs(title = "Principal Component Analysis - HGPS")
+
+pca_1
+
+
+# PCA DS UMK57 vs DMSO + Healthy ----------------------------------------------
+
+sample_info_ds_umk57_neo <- sample_info_correct %>% 
+  dplyr::filter(Disease %in% c("DS", "Healthy"))
+
+counts_matrix_neo_ds_umk57 <- counts_matrix_correct[,row.names(
+  sample_info_ds_umk57_neo)]
+
+colnames(counts_matrix_neo_ds_umk57) == row.names(sample_info_ds_umk57_neo)
+
+# Should be TRUE.
+
+dds_neo_ds_umk57 <- DESeqDataSetFromMatrix(
+  countData = counts_matrix_neo_ds_umk57,
+  colData = sample_info_ds_umk57_neo,
+  design = ~ Individual) # Makes no difference for PCA.
+
+colnames(dds_neo_ds_umk57)
+
+# Design wont matter at this stage though:
+
+smallestGroupSize <- 5 # Half of samples.
+
+keep <- rowSums(counts(dds_neo_ds_umk57) >=5) >= smallestGroupSize 
+
+#Recomended in vignette.
+
+dds_neo_ds_umk57 <- dds_neo_ds_umk57[keep,]
+
+dds_neo_ds_umk57
+
+dds_neo_ds_umk57 <- DESeq(dds_neo_ds_umk57)
+
+
+vsd <- vst(dds_neo_ds_umk57, blind=TRUE) ## Blind to ignore conditions
+pcaData <- plotPCA(vsd, intgroup=c("Treatment"), 
+                   returnData=TRUE, ntop = 1000)
+percentVar <- round(100 * attr(pcaData, "percentVar"))
+
+pcaData <- pcaData |> dplyr::mutate(
+  Individual = case_when(
+    Individual == "NEO" ~ "Healthy",
+    Individual == "14y_DS" ~ "DS 14y",
+    Individual == "5y_DS" ~ "DS 5y",
+    .default = Individual
+  )
+)
+
+
+pca_2 <- ggplot(pcaData, aes(PC1, PC2, color=Treatment, 
+                             label = Individual)) +
+  geom_point(size=4, alpha = 0.5, aes(shape = Individual)) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+  theme_bw(base_size = 15) +
+  xlim(-70, 50) +
+  ylim(-35, 30) +
+  scale_shape_manual(values = shapes) +
+  scale_color_manual(values = cols_pca) +
+  theme(panel.grid = element_blank()) +
+  guides(fill = guide_legend(override.aes = list(linetype = 0)),
+         color = guide_legend(override.aes = list(linetype = 0)),
+         shape = guide_legend(override.aes = list(linetype = 0))) +
+  labs(title = "Principal Component Analysis - DS")
+
+
+pca_1 / pca_2
+
+dir.create(file.path("output_data", "plots", "pca"),
+           recursive = T)
+
+ggsave(
+  "pca_all_healthy_hgps_ds_umk57.pdf",
+  path = file.path("output_data", "plots", "pca"),
+  width = 10,
+  height = 10, 
+  create.dir = T
+)
+
+
+# DESeq2 HGPS UMK57 vs DMSO ---------------------------------------------------
+
+hgps_of_interest <- sample_info_correct %>% 
+  dplyr::filter(Disease == "HGPS") %>% 
+  dplyr::pull(X)
+
+length(hgps_of_interest) # 8 Samples
+
+sample_info_hgps_of_interest <- sample_info_correct[hgps_of_interest,]
+
+counts_matrix_correct_hgps_of_interest <- counts_matrix_correct[,hgps_of_interest]
+
+row.names(sample_info_hgps_of_interest) == colnames(
+  counts_matrix_correct_hgps_of_interest)
+
+dds_hgps_of_interest <- DESeqDataSetFromMatrix(
+  countData = counts_matrix_correct_hgps_of_interest,
+  colData = sample_info_hgps_of_interest,
+  design = ~ Treatment) 
+
+smallestGroupSize <- nrow(sample_info_hgps_of_interest) / 2 # Half of samples.
+
+keep <- rowSums(counts(dds_hgps_of_interest) >=5) >= smallestGroupSize 
+
+# Filter very low expression genes, recommended in vignette:
+
+dds_hgps_of_interest <- dds_hgps_of_interest[keep,]
+
+dds_hgps_of_interest
+
+dds_hgps_of_interest <- DESeq(dds_hgps_of_interest)
+
+res_hgps_of_interest <- results(dds_hgps_of_interest, 
+                                contrast = c("Treatment", "UMK57", "DMSO"), 
+                                cooksCutoff = FALSE, 
+                                independentFiltering = FALSE) 
+
+
+df_hgps_of_interest <- as.data.frame(res_hgps_of_interest)
+
+
+### HGPS UMK57 vs DMSO Volcano Plot -----------------------------------------
+
+
+df_hgps_of_interest$log10padj <- -log10(df_hgps_of_interest$padj)
+df_hgps_of_interest$gene <- row.names(df_hgps_of_interest)
+
+
+write.csv(
+  df_hgps_of_interest, 
+  file.path(
+    "output_data",
+    "results",
+    "deseq2_hgps_umk57_vs_dmso.csv"
+  )
+)
+
+
+df_hgps_of_interest <- df_hgps_of_interest %>% 
+  dplyr::mutate(direction = case_when(
+    log2FoldChange > 0 & padj < 0.05 ~ "Up",
+    log2FoldChange < 0 & padj < 0.05 ~ "Down",
+    .default = "No Change"
+  )) %>% 
+  dplyr::mutate(gene_label = case_when(
+    direction %in% c("Up", "Down") ~ gene,
+    .default = ""
+  ))
+
+cols_volcano <- c(
+  "Up" = "red",
+  "Down" = "blue",
+  "No Change" = "gray"
+)
+
+n_up <- df_hgps_of_interest %>% 
+  dplyr::filter(direction == "Up") %>% 
+  nrow()
+
+n_down <- df_hgps_of_interest %>% 
+  dplyr::filter(direction == "Down") %>% 
+  nrow()
+
+n_unchanged <- df_hgps_of_interest %>% 
+  dplyr::filter(direction == "No Change") %>% 
+  nrow()
+
+
+ggplot(df_hgps_of_interest, aes(
+  x = log2FoldChange, y = log10padj, label = gene_label
+)) +
+  ggrastr::rasterise(geom_point(aes(color = direction), alpha = 0.5,
+                                size = 0.75), dpi = 300) +
+  theme_bw(base_size = 12) +
+  xlim(-6.5, 5) +
+  coord_fixed(0.25) +
+  scale_color_manual(name = "Direction", values = cols_volcano, labels = c(
+    paste0("Down: ", n_down), paste0("No Change: ", n_unchanged), 
+    paste0("Up: ", n_up))) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = 1.3, linetype = "dashed") +
+  labs(y = "-log10(padjust)\n", x = "Log2FC",
+       title = "Volcano Plot - HGPS UMK57 vs DMSO")
+
+ggsave("volcano_plot_hgps_umk57_dmso.pdf",
+       path = "output_data\\plots\\supp_figures",
+       width = 7,
+       height = 7)
+
+
+## DESeq2 DS UMK57 vs DMSO  ----------------------------------------------------
+
+sample_info_ds_of_interest <- sample_info_correct %>% 
+  dplyr::filter(Individual %in% c("14y_DS", "5y_DS"))
+
+counts_matrix_correct_ds_of_interest <- counts_matrix_correct[,row.names(
+  sample_info_ds_of_interest)]
+
+row.names(sample_info_ds_of_interest) == colnames(
+  counts_matrix_correct_ds_of_interest)
+
+dds_ds_of_interest <- DESeqDataSetFromMatrix(
+  countData = counts_matrix_correct_ds_of_interest,
+  colData = sample_info_ds_of_interest,
+  design = ~ Treatment) 
+
+## Design wont matter at this stage though
+
+smallestGroupSize <- 4 ## Half of samples, can be changed later
+
+keep <- rowSums(counts(dds_ds_of_interest) >=5) >= smallestGroupSize 
+##Recomended in vignette
+
+dds_ds_of_interest <- dds_ds_of_interest[keep,]
+
+dds_ds_of_interest
+
+dds_ds_of_interest <- DESeq(dds_ds_of_interest)
+res_ds_of_interest <- results(dds_ds_of_interest, 
+                              contrast = c("Treatment", "UMK57", "DMSO"), 
+                              cooksCutoff=FALSE, independentFiltering=FALSE)
+
+
+df_ds_of_interest <- as.data.frame(res_ds_of_interest)
+
+## DS UMK57 vs DMSO Volcano Plot --..-------------------------------------------
+
+df_ds_of_interest$log10padj <- -log10(df_ds_of_interest$padj)
+df_ds_of_interest$gene <- row.names(df_ds_of_interest)
+
+write.csv(df_ds_of_interest, "output_data\\excel_results\\deseq2_ds_umk57_vs_dmso.csv")
+saveRDS(df_ds_of_interest, "output_data\\ds_umk57_vs_dmso_deseq2.rds")
+
+
+df_ds_of_interest <- df_ds_of_interest %>% 
+  dplyr::mutate(direction = case_when(
+    log2FoldChange > 0 & padj < 0.05 ~ "Up",
+    log2FoldChange < 0 & padj < 0.05 ~ "Down",
+    .default = "No Change"
+  )) %>% 
+  dplyr::mutate(gene_label = case_when(
+    direction %in% c("Up", "Down") ~ gene,
+    .default = ""
+  ))
+
+cols_volcano <- c(
+  "Up" = "red",
+  "Down" = "blue",
+  "No Change" = "gray"
+)
+
+n_up <- df_ds_of_interest %>% 
+  dplyr::filter(direction == "Up") %>% 
+  nrow()
+
+n_down <- df_ds_of_interest %>% 
+  dplyr::filter(direction == "Down") %>% 
+  nrow()
+
+n_unchanged <- df_ds_of_interest %>% 
+  dplyr::filter(direction == "No Change") %>% 
+  nrow()
+
+
+ggplot(df_ds_of_interest, aes(
+  x = log2FoldChange, y = log10padj, label = gene_label
+)) +
+  ggrastr::rasterise(geom_point(aes(color = direction), alpha = 0.5,
+                                size = 0.75), dpi = 300) +
+  theme_bw(base_size = 12) +
+  coord_fixed(0.25) +
+  xlim(-6,12) +
+  scale_color_manual(name = "Direction", values = cols_volcano, labels = c(
+    paste0("Down: ", n_down), paste0("No Change: ", n_unchanged), paste0("Up: ", n_up))) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = 1.3, linetype = "dashed") +
+  labs(y = "-log10(padjust)\n", x = "Log2FC",
+       title = "Volcano Plot - DS UMK57 vs DMSO")
+
+ggsave("volcano_plot_ds_umk57_dmso.pdf",
+       path = "output_data\\plots\\supp_figures",
+       width = 7,
+       height = 7)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Write Session Info and Log Outputs --------------------------------------
+
+log_text <- c(
+  "# Project Progress Log",
+  paste("Timestamp:", format(Sys.time(), "%Y-%m-%d %H:%M:%S")),
+  "",
+  "## Steps performed: ",
+  "1_umk57_vs_dmso_rna_seq_analysis"
+)
+
+writeLines(log_text, "PROGRESS_LOG.md")

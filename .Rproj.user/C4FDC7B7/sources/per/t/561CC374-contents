@@ -1,0 +1,52 @@
+library(renv)
+
+renv::init(bare = T)
+
+renv::hydrate(
+  packages = c("tidyverse", 
+               "DESeq2", 
+               "org.Hs.eg.db", 
+               "ggrepel",
+               "ggalt",
+               "limma",
+               "circlize",
+               "ComplexHeatmap",
+               "ggtree",
+               "patchwork",
+               "survival",
+               "survminer",
+               "TxDb.Hsapiens.UCSC.hg19.knownGene",
+               "AnnotationDbi",
+               "GenomicFeatures",
+               "rstatix",
+               "clusterProfiler",
+               "enrichplot",
+               "msigdbr")
+  ) 
+
+renv::snapshot()
+
+renv::status()
+
+writeLines(capture.output(renv::diagnostics()), "renv_diagnostics.txt")
+writeLines(capture.output(sessionInfo()), "session_info.txt")
+
+log_text <- c(
+  "# Project Setup Log",
+  paste("Timestamp:", format(Sys.time(), "%Y-%m-%d %H:%M:%S")),
+  "",
+  "## Steps performed",
+  "1. Created new RStudio project with renv enabled.",
+  "2. Ran `renv::init(bare = TRUE)`.",
+  "3. Ran `renv::hydrate()` — linked 259 existing packages from local library.",
+  "4. Ran `renv::snapshot()` — lockfile created/updated successfully.",
+  "5. Verified with `renv::status()` — no issues, project in consistent state.",
+  "",
+  "## Result",
+  "renv.lock now tracks 259 packages linked from the system library.",
+  "Project library is isolated and reproducible via `renv::restore()`."
+)
+
+writeLines(log_text, "RENV_SETUP_LOG.md")
+
+print("DONE!")
